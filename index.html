@@ -1,0 +1,705 @@
+<title>AI-Inception</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI-Inception — Building intelligent tools for the next era of computing">
+<style>
+:root {
+  --bg: #09090B;
+  --bg-card: #111113;
+  --bg-card-hover: #18181B;
+  --bg-nav: #09090Bee;
+  --border: #1F1F23;
+  --border-hover: #2E2E35;
+  --text-primary: #EDEDEF;
+  --text-secondary: #8B8B94;
+  --text-tertiary: #52525A;
+  --accent: #4F46E5;
+  --accent-hover: #6366F1;
+  --accent-muted: #4F46E520;
+  --status-active: #22C55E;
+  --status-dev: #EAB308;
+  --status-ref: #6B7280;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 72px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(ellipse at 70% 0%, rgba(79, 70, 229, 0.03) 0%, transparent 50%), var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 56px;
+  background: var(--bg-nav);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 64px);
+  max-width: 100%;
+}
+
+.nav-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 150ms ease;
+  line-height: 1;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a[target="_blank"]:hover {
+  color: var(--accent);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 64px);
+}
+
+/* Hero */
+.hero {
+  padding-top: 160px;
+  margin-bottom: var(--space-24);
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.hero-tagline {
+  margin-top: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.hero-rule {
+  margin-top: var(--space-8);
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Projects Section */
+.projects {
+  margin-bottom: 128px;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.grid {
+  margin-top: var(--space-12);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* Card */
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  padding: 28px 24px;
+  min-height: 180px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  will-change: background-color, border-color;
+}
+
+.card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card-dot--active { background: var(--status-active); }
+.card-dot--dev { background: var(--status-dev); }
+.card-dot--ref { background: var(--status-ref); }
+
+.card-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.card-lang {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-name {
+  margin-top: var(--space-5);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.card-desc {
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-spacer {
+  flex: 1;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 16px;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Footer */
+footer {
+  padding: var(--space-10) 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+.footer-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  opacity: 0;
+  animation: heroFadeUp 600ms ease-out forwards;
+}
+
+.card {
+  opacity: 0;
+}
+
+.card.is-visible {
+  animation: fadeUp 400ms ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 120px;
+    margin-bottom: var(--space-16);
+    text-align: center;
+  }
+
+  .hero-rule {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-canvas {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .card {
+    padding: 24px 20px;
+    min-height: 160px;
+  }
+
+  .card-arrow {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+  .projects {
+    margin-bottom: 80px;
+  }
+
+  .section-label {
+    text-align: center;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero {
+    padding-top: 120px;
+    margin-bottom: var(--space-12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-content,
+  .card {
+    opacity: 1;
+  }
+}
+</style>
+
+<header class="nav" role="banner">
+  <span class="nav-name">AI-Inception</span>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="#projects">Projects</a>
+    <a href="https://github.com/AI-Inception" target="_blank" rel="noopener noreferrer" aria-label="AI-Inception on GitHub (opens in new tab)">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero container">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title">AI-Inception</h1>
+      <p class="hero-tagline">Building intelligent tools for the next era of computing</p>
+      <div class="hero-rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="projects container" id="projects" aria-label="Projects">
+    <h2 class="section-label">Projects</h2>
+    <div class="grid" role="list">
+
+      <a class="card" href="projects/video-digest.html" role="listitem" aria-label="Video Digest — AI-powered video summarization bot for YouTube and Bilibili">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">Python</span>
+        </div>
+        <h3 class="card-name">Video Digest</h3>
+        <p class="card-desc">AI-powered video summarization bot for YouTube and Bilibili</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/file-wisher.html" role="listitem" aria-label="File Wisher — AI-driven multi-source resource discovery via natural language">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">Python</span>
+        </div>
+        <h3 class="card-name">File Wisher</h3>
+        <p class="card-desc">AI-driven multi-source resource discovery via natural language</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/xinfeng.html" role="listitem" aria-label="Xinfeng — Bilibili video English localization desktop tool">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">Python</span>
+        </div>
+        <h3 class="card-name">Xinfeng</h3>
+        <p class="card-desc">Bilibili video English localization desktop tool</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/yt-localizer.html" role="listitem" aria-label="YT-Localizer — YouTube video auto-localization with LLM subtitle translation">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">Python</span>
+        </div>
+        <h3 class="card-name">YT-Localizer</h3>
+        <p class="card-desc">YouTube video auto-localization with LLM subtitle translation</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/opencowork.html" role="listitem" aria-label="OpenCowork — AI-native collaborative coding desktop client">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">TypeScript</span>
+        </div>
+        <h3 class="card-name">OpenCowork</h3>
+        <p class="card-desc">AI-native collaborative coding desktop client</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/video-keypoints.html" role="listitem" aria-label="Video Keypoints — Automated video keypoint extraction engine">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--dev" aria-hidden="true"></span>
+            <span class="card-status-text">In Development</span>
+          </div>
+        </div>
+        <h3 class="card-name">Video Keypoints</h3>
+        <p class="card-desc">Automated video keypoint extraction engine</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/rag-in-action.html" role="listitem" aria-label="RAG-In-Action — Practical GPT + RAG patterns and implementation guide">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--ref" aria-hidden="true"></span>
+            <span class="card-status-text">Reference</span>
+          </div>
+        </div>
+        <h3 class="card-name">RAG-In-Action</h3>
+        <p class="card-desc">Practical GPT + RAG patterns and implementation guide</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/agentconvert-v2.html" role="listitem" aria-label="AgentConvert v2 — Multi-model AI relay platform with unified billing">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">TypeScript</span>
+        </div>
+        <h3 class="card-name">AgentConvert v2</h3>
+        <p class="card-desc">Multi-model AI relay platform with unified billing</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/agentconvert-opencode.html" role="listitem" aria-label="AgentConvert Code — AI coding desktop client for gateway-integrated workflows">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">TypeScript</span>
+        </div>
+        <h3 class="card-name">AgentConvert Code</h3>
+        <p class="card-desc">AI coding desktop client for gateway-integrated workflows</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+      <a class="card" href="projects/agentconvert-newapi.html" role="listitem" aria-label="AgentConvert NewAPI — LLM gateway fork with model routing and pool groups">
+        <div class="card-top">
+          <div class="card-status">
+            <span class="card-dot card-dot--active" aria-hidden="true"></span>
+            <span class="card-status-text">Active</span>
+          </div>
+          <span class="card-lang">Go</span>
+        </div>
+        <h3 class="card-name">AgentConvert NewAPI</h3>
+        <p class="card-desc">LLM gateway fork with model routing and pool groups</p>
+        <div class="card-spacer"></div>
+        <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+      </a>
+
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <span class="footer-name">AI-Inception</span>
+  <a class="footer-link" href="https://github.com/AI-Inception" target="_blank" rel="noopener noreferrer" aria-label="AI-Inception GitHub organization (opens in new tab)">github.com/AI-Inception</a>
+</footer>
+
+<script>
+(function() {
+  // Card stagger animation via IntersectionObserver
+  var grid = document.querySelector('.grid');
+  var cards = document.querySelectorAll('.card');
+
+  if (grid && cards.length) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          cards.forEach(function(card, i) {
+            card.style.animationDelay = (i * 40) + 'ms';
+            card.classList.add('is-visible');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(grid);
+  }
+
+  // Hero diagonal canvas draw
+  var canvas = document.querySelector('.hero-canvas');
+  if (canvas && window.innerWidth >= 768) {
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.parentElement;
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+
+    function drawLine(progress) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var x1 = canvas.width * 0.6;
+      var y1 = 0;
+      var x2 = canvas.width;
+      var y2 = canvas.height * 0.8;
+      var cx = x1 + (x2 - x1) * progress;
+      var cy = y1 + (y2 - y1) * progress;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(cx, cy);
+      ctx.strokeStyle = 'rgba(79, 70, 229, 0.20)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    resize();
+    var start = null;
+    var duration = 800;
+    var delay = 200;
+
+    function animate(ts) {
+      if (!start) start = ts;
+      var elapsed = ts - start - delay;
+      if (elapsed < 0) { requestAnimationFrame(animate); return; }
+      var progress = Math.min(elapsed / duration, 1);
+      progress = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      drawLine(progress);
+      if (progress < 1) requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() { resize(); drawLine(1); }, 100);
+    });
+  }
+
+  // Smooth scroll for Projects nav link
+  var projLink = document.querySelector('a[href="#projects"]');
+  if (projLink) {
+    projLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+})();
+</script>

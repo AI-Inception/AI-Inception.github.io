@@ -1,0 +1,893 @@
+<title>Video Keypoints — AI-Inception</title>
+<style>
+/* ============================================================
+   AI-INCEPTION PROJECT DOCUMENTATION TEMPLATE
+   Definitive Specification v1.0
+
+   ARCHITECTURE: Single-Column Narrative Flow with Sticky Nav
+   (Proposal B foundation, enhanced with A's sidebar nav for desktop
+    and C's stats grid for information density)
+
+   This CSS is VERBATIM — all 10 agents copy it unchanged.
+   Only the HTML content varies per project.
+   ============================================================ */
+
+/* --- DESIGN TOKENS --- */
+:root {
+  /* Background layers (darkest to lightest) */
+  --bg-ground: #0a0a0f;
+  --bg-surface: #0f0f14;
+  --bg-elevated: #141419;
+  --bg-code: #0c0c12;
+  --bg-code-header: #101016;
+
+  /* Accent — indigo to blue */
+  --accent: #6366f1;
+  --accent-dim: #4f46e5;
+  --accent-text: #a5b4fc;
+  --accent-wash: rgba(99, 102, 241, 0.06);
+  --accent-glow: rgba(99, 102, 241, 0.08);
+  --accent-border: rgba(99, 102, 241, 0.15);
+  --accent-border-hover: rgba(99, 102, 241, 0.28);
+
+  /* Text hierarchy */
+  --text-primary: #f0f0f5;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --text-dim: #475569;
+
+  /* Borders */
+  --border-subtle: rgba(99, 102, 241, 0.08);
+  --border-medium: rgba(99, 102, 241, 0.14);
+  --border-strong: rgba(99, 102, 241, 0.22);
+
+  /* Status colors */
+  --status-active-fg: #4ade80;
+  --status-active-bg: rgba(34, 197, 94, 0.08);
+  --status-active-border: rgba(34, 197, 94, 0.2);
+
+  --status-dev-fg: #facc15;
+  --status-dev-bg: rgba(234, 179, 8, 0.08);
+  --status-dev-border: rgba(234, 179, 8, 0.2);
+
+  --status-ref-fg: #60a5fa;
+  --status-ref-bg: rgba(59, 130, 246, 0.08);
+  --status-ref-border: rgba(59, 130, 246, 0.2);
+
+  /* Typography stacks */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "JetBrains Mono", "Fira Code", ui-monospace, "Consolas", monospace;
+
+  /* Type scale — Major Third (1.25) from 15px base */
+  --fs-xs: 0.75rem;      /* 12px — labels, badges, nav */
+  --fs-sm: 0.8125rem;    /* 13px — code, captions */
+  --fs-base: 0.9375rem;  /* 15px — body text */
+  --fs-md: 1.0625rem;    /* 17px — lead paragraphs */
+  --fs-lg: 1.25rem;      /* 20px — h3 subheadings */
+  --fs-xl: 1.5625rem;    /* 25px — h2 section titles */
+  --fs-2xl: 2rem;        /* 32px — h1 project title (desktop) */
+  --fs-3xl: 2.441rem;    /* 39px — reserved for hero if needed */
+
+  /* Spacing — 4px base */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+
+  /* Layout */
+  --content-max: 720px;
+  --sidebar-width: 220px;
+  --nav-height: 48px;
+}
+
+/* --- RESET --- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-ground);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4, p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* --- ACCESSIBILITY --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+html { scroll-behavior: smooth; }
+
+/* ============================================================
+   PAGE LAYOUT — Sidebar + Content
+   ============================================================ */
+.page-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   1. SIDEBAR NAVIGATION (Desktop only)
+   ============================================================ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  padding: var(--sp-8) 0;
+  background: var(--bg-ground);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-back {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6);
+  margin-bottom: var(--sp-8);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+.sidebar-back:hover { color: var(--text-primary); }
+.sidebar-back svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s ease;
+}
+.sidebar-back:hover svg { transform: translateX(-2px); }
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.sidebar-link {
+  display: block;
+  padding: var(--sp-2) var(--sp-6);
+  font-size: var(--fs-sm);
+  color: var(--text-tertiary);
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+.sidebar-link:hover {
+  color: var(--text-primary);
+  background: var(--accent-wash);
+}
+.sidebar-link.active {
+  color: var(--accent-text);
+  border-left-color: var(--accent);
+  background: var(--accent-wash);
+}
+
+/* ============================================================
+   2. MOBILE TOP BAR
+   ============================================================ */
+.mobile-bar {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(10, 10, 15, 0.88);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--sp-3) var(--sp-4);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-back {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.mobile-back svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid var(--border-medium);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+.mobile-menu-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Sidebar overlay state (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 150;
+}
+.sidebar-overlay.active { display: block; }
+.sidebar.open { transform: translateX(0); }
+
+/* ============================================================
+   3. MAIN CONTENT AREA
+   ============================================================ */
+.main-content {
+  grid-column: 2;
+  padding: var(--sp-16) var(--sp-10);
+  max-width: calc(var(--content-max) + var(--sp-10) * 2);
+}
+
+/* ============================================================
+   4. PAGE HEADER — Title, Status, Subtitle, Tech Tags
+   ============================================================ */
+.page-header {
+  margin-bottom: var(--sp-16);
+}
+
+.page-header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.status-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status-badge.active {
+  color: var(--status-active-fg);
+  background: var(--status-active-bg);
+  border: 1px solid var(--status-active-border);
+}
+.status-badge.development {
+  color: var(--status-dev-fg);
+  background: var(--status-dev-bg);
+  border: 1px solid var(--status-dev-border);
+}
+.status-badge.reference {
+  color: var(--status-ref-fg);
+  background: var(--status-ref-bg);
+  border: 1px solid var(--status-ref-border);
+}
+
+/* Page Title */
+.page-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-4);
+  text-wrap: balance;
+}
+
+/* Page Subtitle */
+.page-subtitle {
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* Tech Tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-6);
+}
+.tech-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-text);
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-border);
+  border-radius: 4px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   5. DOCUMENT SECTIONS
+   ============================================================ */
+.doc-section {
+  margin-bottom: var(--sp-16);
+  scroll-margin-top: var(--sp-8);
+}
+
+/* Section Heading (h2) */
+.doc-section-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xl);
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Sub-heading (h3) — used inside Usage/Docs sections */
+.doc-subsection-title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-top: var(--sp-10);
+  margin-bottom: var(--sp-4);
+}
+.doc-subsection-title:first-child { margin-top: 0; }
+
+/* Sub-sub-heading (h4) — rare, for deeply nested docs */
+.doc-detail-title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-2);
+}
+
+/* Prose */
+.doc-section p {
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--sp-4);
+  max-width: 65ch;
+}
+.doc-section p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.doc-section p a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(165, 180, 252, 0.3);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+}
+.doc-section p a:hover {
+  text-decoration-color: var(--accent-text);
+}
+
+/* Lists */
+.doc-section ul,
+.doc-section ol {
+  padding-left: var(--sp-5);
+  margin-bottom: var(--sp-5);
+  list-style: disc;
+}
+.doc-section ol { list-style: decimal; }
+.doc-section li {
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--sp-2);
+}
+.doc-section li::marker {
+  color: var(--text-dim);
+}
+
+/* Feature list — for Overview key features */
+.feature-list {
+  padding-left: 0;
+  list-style: none;
+}
+.feature-list li {
+  padding-left: var(--sp-6);
+  position: relative;
+}
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   6. CODE BLOCKS
+   ============================================================ */
+.code-block-wrapper {
+  margin: var(--sp-5) 0;
+  border-radius: 8px;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-code);
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bg-code-header);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.code-block-lang {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.code-block-filename {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+}
+
+.code-block-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: all 0.15s ease;
+}
+.code-block-copy:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-medium);
+}
+.code-block-copy svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.code-block-body {
+  overflow-x: auto;
+  padding: var(--sp-4) var(--sp-5);
+}
+.code-block-body::-webkit-scrollbar {
+  height: 6px;
+}
+.code-block-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.code-block-body::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 3px;
+}
+.code-block-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+.code-block-body pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  color: #e2e8f0;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Inline code */
+.doc-section code,
+p code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  color: var(--accent-text);
+}
+/* Prevent double-styling inside code blocks */
+.code-block-body code {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ============================================================
+   7. REPO ACCESS CARD (always last element)
+   ============================================================ */
+.repo-card {
+  margin-top: var(--sp-20);
+  padding: var(--sp-8);
+  background: linear-gradient(135deg, var(--accent-wash), rgba(59, 130, 246, 0.03));
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.repo-card:hover {
+  border-color: var(--accent-border-hover);
+  transform: translateY(-1px);
+}
+
+.repo-card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+}
+.repo-card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent-text);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.repo-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.repo-card-title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.repo-card-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-3);
+}
+
+.repo-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--accent-text);
+  padding: var(--sp-2) var(--sp-4);
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.repo-card-link:hover {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+.repo-card-link svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================================
+   8. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Tablet: sidebar becomes overlay */
+@media (max-width: 1024px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 200;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .mobile-bar {
+    display: flex;
+  }
+  .main-content {
+    grid-column: 1;
+    padding: var(--sp-12) var(--sp-8);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .main-content {
+    padding: var(--sp-8) var(--sp-4);
+  }
+  .page-title {
+    font-size: 1.5rem;
+  }
+  .doc-section-title {
+    font-size: var(--fs-lg);
+  }
+  .doc-section {
+    margin-bottom: var(--sp-12);
+  }
+  .code-block-body {
+    padding: var(--sp-3) var(--sp-4);
+  }
+  .code-block-body pre {
+    font-size: 0.75rem;
+  }
+  .repo-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--sp-6);
+  }
+  .tech-tags {
+    gap: 6px;
+  }
+  .tech-tag {
+    font-size: 0.6875rem;
+    padding: 2px 8px;
+  }
+}
+
+/* ============================================================
+   9. UTILITY CLASSES
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* All interactive elements: consistent transitions */
+a, button, .sidebar-link, .tech-tag, .code-block-copy {
+  transition: all 0.15s ease;
+}
+</style>
+
+<div class="page-layout">
+  <!-- SIDEBAR (Desktop) -->
+  <nav class="sidebar" id="sidebar">
+    <a href="../index.html" class="sidebar-back">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>All Projects</span>
+    </a>
+    <div class="sidebar-nav">
+      <a href="#overview" class="sidebar-link active">Overview</a>
+      <a href="#development" class="sidebar-link">Development</a>
+      <a href="#access" class="sidebar-link">Repository</a>
+    </div>
+  </nav>
+
+  <!-- MOBILE BAR -->
+  <header class="mobile-bar">
+    <a href="../index.html" class="mobile-back">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>All Projects</span>
+    </a>
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  <!-- OVERLAY BACKDROP (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <div class="page-header-meta">
+        <span class="status-badge development">In Development</span>
+      </div>
+      <h1 class="page-title">Video Keypoints</h1>
+      <p class="page-subtitle">Automated video keypoint extraction engine. Analyzes video content to identify and extract key moments, timestamps, and structural highlights.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">TBD</span>
+      </div>
+    </header>
+
+    <!-- SECTION: Overview -->
+    <section id="overview" class="doc-section">
+      <h2 class="doc-section-title">Overview</h2>
+      <p>Video Keypoints is an automated extraction engine designed to analyze video content and surface the moments that matter. Rather than requiring manual review of full-length recordings, the system identifies structural highlights, key transitions, and semantically significant timestamps.</p>
+      <p>The engine produces structured output suitable for downstream consumption by other tools in the pipeline, including integration with the Video Digest workflow for end-to-end video summarization and navigation.</p>
+
+      <h3 class="doc-subsection-title">Planned Features</h3>
+      <ul class="feature-list">
+        <li>Automated keypoint detection from video content using multimodal analysis</li>
+        <li>Timestamp-based moment extraction with contextual metadata</li>
+        <li>Structured output format for downstream consumption by other pipeline stages</li>
+        <li>Integration with Video Digest pipeline for end-to-end video processing</li>
+      </ul>
+    </section>
+
+    <!-- SECTION: Development -->
+    <section id="development" class="doc-section">
+      <h2 class="doc-section-title">Development</h2>
+      <p>This project is in early development. The technical direction is currently under evaluation, including decisions around the core analysis framework, model selection, and output schema design.</p>
+
+      <h3 class="doc-subsection-title">Current Status</h3>
+      <ul>
+        <li><strong>Architecture:</strong> Under evaluation</li>
+        <li><strong>Tech stack:</strong> To be determined</li>
+        <li><strong>Output format:</strong> Structured schema design in progress</li>
+        <li><strong>Pipeline integration:</strong> Planned for Video Digest compatibility</li>
+      </ul>
+
+      <h3 class="doc-subsection-title">Design Goals</h3>
+      <p>The extraction engine aims to balance precision with recall when surfacing keypoints. The system should identify genuinely significant moments without overwhelming consumers with noise. Output must be machine-readable and composable with other pipeline stages.</p>
+    </section>
+
+    <!-- REPO ACCESS CARD (always last, always present) -->
+    <section id="access" class="repo-card">
+      <div class="repo-card-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <div class="repo-card-body">
+        <div class="repo-card-title">Private Repository</div>
+        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <a href="https://github.com/AI-Inception/video-keypoints" class="repo-card-link" target="_blank" rel="noopener noreferrer">
+          github.com/AI-Inception/video-keypoints
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function() {
+  // Scroll-spy: highlight active sidebar link
+  const sections = document.querySelectorAll('.doc-section, .repo-card');
+  const navLinks = document.querySelectorAll('.sidebar-link');
+
+  if (sections.length && navLinks.length) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function(link) { link.classList.remove('active'); });
+          var id = entry.target.id;
+          var activeLink = document.querySelector('.sidebar-link[href="#' + id + '"]');
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(function(section) { observer.observe(section); });
+  }
+
+  // Mobile menu toggle
+  var sidebar = document.getElementById('sidebar');
+  var menuToggle = document.getElementById('menuToggle');
+  var overlay = document.getElementById('sidebarOverlay');
+
+  function openMenu() {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+  }
+  function closeMenu() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  }
+
+  if (menuToggle) menuToggle.addEventListener('click', openMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+
+  // Close mobile menu on nav link click
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Copy button functionality
+  document.querySelectorAll('.code-block-copy').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var codeEl = btn.closest('.code-block-wrapper').querySelector('pre code');
+      if (codeEl) {
+        navigator.clipboard.writeText(codeEl.textContent).then(function() {
+          btn.style.color = 'var(--status-active-fg)';
+          setTimeout(function() { btn.style.color = ''; }, 1500);
+        });
+      }
+    });
+  });
+})();
+</script>
