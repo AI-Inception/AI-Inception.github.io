@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge active">Active</span>
+        <span class="status-badge active">活跃</span>
       </div>
       <h1 class="page-title">Video Digest</h1>
-      <p class="page-subtitle">AI-powered video summarizer Telegram bot. Paste a YouTube or Bilibili URL, get a structured summary with timestamped key points.</p>
+      <p class="page-subtitle">AI 驱动的视频摘要 Telegram 机器人。粘贴 YouTube 或 Bilibili 链接，即可获得带时间戳关键点的结构化摘要。</p>
       <div class="tech-tags">
         <span class="tech-tag">Python 3.12</span>
         <span class="tech-tag">FastAPI</span>
@@ -790,44 +790,44 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>Video Digest is an AI-powered pipeline that transforms long-form video content into concise, structured summaries. Users interact through a Telegram bot interface or WebUI — paste a YouTube or Bilibili URL, and the system extracts transcripts, processes them through an LLM, and returns a summary with timestamped key points.</p>
-      <p>The system is designed to handle videos of any length. Transcripts exceeding 30K tokens are automatically chunked into approximately 8K segments with overlap, summarized individually, then merged into a coherent final output. Results are cached in SQLite with a 7-day TTL to avoid redundant processing.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>Video Digest 是一个 AI 驱动的处理管线，将长视频内容转化为简洁、结构化的摘要。用户通过 Telegram 机器人或 WebUI 交互——粘贴 YouTube 或 Bilibili 链接，系统自动提取字幕、经 LLM 处理后返回带时间戳关键点的摘要。</p>
+      <p>系统可处理任意时长的视频。当字幕文本超过 30K token 时，会自动分割为约 8K 的重叠片段，逐段摘要后合并为连贯的最终输出。结果缓存在 SQLite 中，TTL 为 7 天，避免重复处理。</p>
 
-      <h3 class="doc-subsection-title">Key Features</h3>
+      <h3 class="doc-subsection-title">核心功能</h3>
       <ul class="feature-list">
-        <li>Intelligent chunking for long transcripts (approximately 8K per chunk with overlap), with per-chunk summarization followed by a merge pass</li>
-        <li>Dual transcript extraction: yt-dlp subtitle extraction as primary method, with audio-to-text via faster-whisper as fallback</li>
-        <li>SQLite result caching with 7-day TTL eliminates redundant API calls for repeated URLs</li>
-        <li>Server-Sent Events (SSE) for real-time progress streaming to clients during processing</li>
-        <li>LLM summarization powered by Claude Sonnet 5 via AgentConvert gateway</li>
+        <li>长文本智能分块（约 8K/块，带重叠），逐块摘要后执行合并 pass</li>
+        <li>双路字幕提取：yt-dlp 字幕下载为主，faster-whisper 语音转文字为备选</li>
+        <li>SQLite 结果缓存（7 天 TTL），消除重复 URL 的冗余 API 调用</li>
+        <li>Server-Sent Events (SSE) 实时向客户端推送处理进度</li>
+        <li>LLM 摘要由 Claude Sonnet 5 通过 AgentConvert 网关驱动</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>Built on a Python async stack with FastAPI for high-concurrency request handling and streaming responses.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>基于 Python 异步栈构建，使用 FastAPI 实现高并发请求处理与流式响应。</p>
       <ul>
-        <li><strong>Runtime:</strong> Python 3.12, FastAPI, uvicorn</li>
-        <li><strong>Transcript Extraction:</strong> yt-dlp (subtitle download), faster-whisper (speech-to-text fallback)</li>
-        <li><strong>LLM:</strong> Claude Sonnet 5 via AgentConvert gateway</li>
-        <li><strong>Storage:</strong> SQLite (result cache, 7-day TTL)</li>
-        <li><strong>Streaming:</strong> Server-Sent Events (SSE) for real-time progress</li>
-        <li><strong>Package Management:</strong> uv</li>
+        <li><strong>运行时：</strong> Python 3.12, FastAPI, uvicorn</li>
+        <li><strong>字幕提取：</strong> yt-dlp（字幕下载）、faster-whisper（语音转文字备选）</li>
+        <li><strong>LLM：</strong> Claude Sonnet 5，经 AgentConvert 网关调用</li>
+        <li><strong>存储：</strong> SQLite（结果缓存，7 天 TTL）</li>
+        <li><strong>流式传输：</strong> Server-Sent Events (SSE) 实时推送进度</li>
+        <li><strong>包管理：</strong> uv</li>
       </ul>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>The processing pipeline follows a deterministic flow from URL input to structured summary output.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>处理管线遵循从 URL 输入到结构化摘要输出的确定性流程。</p>
 
-      <h3 class="doc-subsection-title">Pipeline</h3>
+      <h3 class="doc-subsection-title">处理流程</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">text</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -836,26 +836,26 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Chunking Strategy</h3>
-      <p>For transcripts exceeding 30K tokens, the system splits content into chunks of approximately 8K tokens with overlap between adjacent chunks to preserve context continuity. Each chunk is summarized independently, then the per-chunk summaries are merged into a single coherent output in a final LLM pass.</p>
+      <h3 class="doc-subsection-title">分块策略</h3>
+      <p>当字幕文本超过 30K token 时，系统将内容分割为约 8K token 的块，相邻块之间保留重叠以维持上下文连续性。每块独立摘要，最后通过一次 LLM pass 将各块摘要合并为连贯的最终输出。</p>
     </section>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
+      <h2 class="doc-section-title">开发指南</h2>
 
-      <h3 class="doc-subsection-title">Prerequisites</h3>
+      <h3 class="doc-subsection-title">前置条件</h3>
       <ul>
         <li>Python 3.12+</li>
-        <li>uv (package manager)</li>
-        <li>API keys configured in <code>.env</code></li>
+        <li>uv（包管理器）</li>
+        <li>在 <code>.env</code> 中配置 API 密钥</li>
       </ul>
 
-      <h3 class="doc-subsection-title">Local Setup</h3>
+      <h3 class="doc-subsection-title">本地搭建</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -866,8 +866,8 @@ uv run python -m video_digest.main</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Deployment</h3>
-      <p>Production deployment runs on a Raspberry Pi 5 as a systemd service on port 8899.</p>
+      <h3 class="doc-subsection-title">部署</h3>
+      <p>生产环境部署在 Raspberry Pi 5 上，作为 systemd 服务运行，监听端口 8899。</p>
     </section>
 
     <!-- REPO ACCESS CARD -->
@@ -879,8 +879,8 @@ uv run python -m video_digest.main</code></pre>
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/video-digest" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/video-digest
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

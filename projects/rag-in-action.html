@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#contents" class="sidebar-link">Contents</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#contents" class="sidebar-link">目录</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge reference">Reference</span>
+        <span class="status-badge reference">参考资料</span>
       </div>
       <h1 class="page-title">RAG-In-Action</h1>
-      <p class="page-subtitle">Practical GPT + RAG project experience and implementation patterns. A public reference collection for building production retrieval-augmented generation systems.</p>
+      <p class="page-subtitle">GPT + RAG 实战经验与实现模式。面向生产级检索增强生成系统构建的公开参考合集。</p>
       <div class="tech-tags">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">LangChain</span>
@@ -788,71 +788,71 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>RAG-In-Action is a curated reference collection documenting real-world experience building Retrieval-Augmented Generation systems. The repository captures practical patterns, engineering decisions, and integration strategies accumulated across multiple production deployments.</p>
-      <p>The collection covers the full RAG pipeline from document ingestion and chunking strategies through vector retrieval, re-ranking, and LLM response generation. Each article addresses a specific engineering challenge encountered in production, with working code and architectural rationale.</p>
-      <p><strong>Archive note:</strong> This repository was last actively maintained in June 2024. For the latest RAG practices, refer to the official LangChain and LlamaIndex documentation. The patterns documented here remain valid as foundational reference material.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>RAG-In-Action 是一个精选参考合集，记录了构建检索增强生成（RAG）系统的真实工程经验。仓库沉淀了多个生产部署中积累的实用模式、工程决策和集成策略。</p>
+      <p>合集覆盖完整的 RAG 流水线——从文档摄入、分块策略，到向量检索、重排序，再到 LLM 响应生成。每篇文章针对生产中遇到的具体工程挑战，附带可运行代码和架构设计理由。</p>
+      <p><strong>归档说明：</strong>本仓库最后活跃维护时间为 2024 年 6 月。如需最新 RAG 实践，请参考 LangChain 和 LlamaIndex 官方文档。此处记录的模式作为基础参考资料仍然有效。</p>
       <ul class="feature-list">
-        <li>End-to-end RAG pipeline implementation with multiple framework options</li>
-        <li>Production deployment patterns including RAG-GPT for rapid website integration</li>
-        <li>Re-ranking strategies for improving retrieval precision</li>
-        <li>Multi-provider LLM integration (OpenAI, Zhipu AI, DeepSeek, Ollama)</li>
-        <li>Enterprise customer service architectures with domain-specific knowledge bases</li>
+        <li>端到端 RAG 流水线实现，支持多种框架选择</li>
+        <li>生产部署模式，包括 RAG-GPT 快速网站集成</li>
+        <li>重排序策略，提升检索精度</li>
+        <li>多供应商 LLM 集成（OpenAI、智谱 AI、DeepSeek、Ollama）</li>
+        <li>企业级客服架构，配合领域专属知识库</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>The reference implementations span multiple frameworks and providers, reflecting the evolving RAG ecosystem through early 2024.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>参考实现覆盖多种框架和供应商，反映了 2024 年初 RAG 生态的演进状况。</p>
       <ul>
-        <li><strong>Orchestration:</strong> LangChain, LlamaIndex</li>
-        <li><strong>Language Models:</strong> OpenAI GPT-3.5/4, Zhipu AI, DeepSeek, Ollama (local)</li>
-        <li><strong>Vector Stores:</strong> ChromaDB, FAISS, Milvus</li>
-        <li><strong>Deployment:</strong> RAG-GPT framework, Docker, FastAPI</li>
-        <li><strong>Language:</strong> Python 3.10+</li>
+        <li><strong>编排框架：</strong>LangChain、LlamaIndex</li>
+        <li><strong>语言模型：</strong>OpenAI GPT-3.5/4、智谱 AI、DeepSeek、Ollama（本地）</li>
+        <li><strong>向量数据库：</strong>ChromaDB、FAISS、Milvus</li>
+        <li><strong>部署方案：</strong>RAG-GPT 框架、Docker、FastAPI</li>
+        <li><strong>编程语言：</strong>Python 3.10+</li>
       </ul>
     </section>
 
     <!-- SECTION: Contents -->
     <section id="contents" class="doc-section">
-      <h2 class="doc-section-title">Contents</h2>
-      <p>The repository contains the following articles and implementation guides:</p>
+      <h2 class="doc-section-title">目录</h2>
+      <p>仓库包含以下文章和实现指南：</p>
 
-      <h3 class="doc-subsection-title">RAG Technology Deep Dive</h3>
-      <p>Comprehensive introduction to building next-generation Q&A systems with retrieval-augmented generation. Covers the theoretical foundation, architectural patterns, and trade-offs between different chunking and retrieval strategies.</p>
+      <h3 class="doc-subsection-title">RAG 技术深度解析</h3>
+      <p>全面介绍如何使用检索增强生成构建下一代问答系统。涵盖理论基础、架构模式，以及不同分块和检索策略之间的取舍。</p>
 
-      <h3 class="doc-subsection-title">RAG-GPT: 5-Minute LLM Deployment</h3>
-      <p>A rapid deployment framework for adding LLM-powered Q&A to any website. Demonstrates the minimal viable RAG pipeline with document ingestion, vector indexing, and conversational retrieval in a single deployable package.</p>
+      <h3 class="doc-subsection-title">RAG-GPT：5 分钟部署 LLM</h3>
+      <p>快速部署框架，为任意网站添加 LLM 驱动的问答能力。在单个可部署包中演示最小可行 RAG 流水线——文档摄入、向量索引和对话式检索。</p>
 
-      <h3 class="doc-subsection-title">Improving RAG with Re-Ranking</h3>
-      <p>Addresses the precision gap in naive vector retrieval. Implements cross-encoder re-ranking to improve answer relevance, with benchmarks comparing retrieval quality before and after re-ranking integration.</p>
+      <h3 class="doc-subsection-title">利用重排序提升 RAG 效果</h3>
+      <p>解决朴素向量检索的精度缺口。实现 Cross-Encoder 重排序以提升回答相关性，并提供集成重排序前后检索质量的基准对比。</p>
 
-      <h3 class="doc-subsection-title">LangChain Intelligent Customer Service</h3>
-      <p>Building a production customer service system using RAG-GPT as the foundation with LangChain orchestration. Covers conversation memory, context window management, and graceful fallback to human agents.</p>
+      <h3 class="doc-subsection-title">LangChain 智能客服</h3>
+      <p>以 RAG-GPT 为基础，结合 LangChain 编排构建生产级客服系统。涵盖对话记忆、上下文窗口管理以及向人工坐席的优雅降级。</p>
 
-      <h3 class="doc-subsection-title">Zhipu AI and DeepSeek Integration</h3>
-      <p>Adapting the OpenAI Cookbook customer service patterns for Chinese LLM providers. Documents API compatibility layers, prompt engineering differences, and cost-performance trade-offs across providers.</p>
+      <h3 class="doc-subsection-title">智谱 AI 与 DeepSeek 集成</h3>
+      <p>将 OpenAI Cookbook 的客服模式适配到国产 LLM 供应商。记录 API 兼容层、提示工程差异，以及跨供应商的成本性能权衡。</p>
 
-      <h3 class="doc-subsection-title">Engineering Challenges in RAG-GPT</h3>
-      <p>Post-mortem and lessons learned from production RAG-GPT deployments. Covers document update pipelines, embedding drift, latency optimization, and handling adversarial queries in customer-facing systems.</p>
+      <h3 class="doc-subsection-title">RAG-GPT 工程挑战</h3>
+      <p>生产环境 RAG-GPT 部署的复盘与经验教训。涵盖文档更新流水线、Embedding 漂移、延迟优化，以及面向客户系统中对抗性查询的处理。</p>
 
-      <h3 class="doc-subsection-title">RAG-GPT with Ollama</h3>
-      <p>Running the full RAG pipeline locally using Ollama for inference. Demonstrates privacy-preserving deployments where sensitive documents never leave the local network, with performance tuning for consumer hardware.</p>
+      <h3 class="doc-subsection-title">RAG-GPT 搭配 Ollama</h3>
+      <p>使用 Ollama 进行本地推理，运行完整 RAG 流水线。演示敏感文档不离开本地网络的隐私保护部署方案，并针对消费级硬件进行性能调优。</p>
 
-      <h3 class="doc-subsection-title">OpenIM Bot: Enterprise Customer Service</h3>
-      <p>Enterprise-grade intelligent customer service architecture using LLM with domain-specific knowledge bases. Integrates with OpenIM for multi-channel messaging, supporting concurrent conversations with session isolation.</p>
+      <h3 class="doc-subsection-title">OpenIM Bot：企业级智能客服</h3>
+      <p>基于 LLM 与领域专属知识库的企业级智能客服架构。集成 OpenIM 多渠道消息，支持并发会话与会话隔离。</p>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>Clone the repository and explore individual articles. Each subdirectory contains its own README with setup instructions specific to that implementation.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>克隆仓库并浏览各篇文章。每个子目录包含各自的 README，附带对应实现的环境配置说明。</p>
 
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -862,13 +862,13 @@ cd RAG-In-Action</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Environment Setup</h3>
-      <p>Most implementations require Python 3.10+ and an OpenAI API key. Some articles demonstrate alternative providers that do not require OpenAI credentials.</p>
+      <h3 class="doc-subsection-title">环境配置</h3>
+      <p>大多数实现需要 Python 3.10+ 和 OpenAI API 密钥。部分文章演示了无需 OpenAI 凭据的替代供应商方案。</p>
 
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -885,13 +885,13 @@ export OPENAI_API_KEY="sk-..."</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Running RAG-GPT</h3>
-      <p>The RAG-GPT framework provides the fastest path to a working demo. It bundles document ingestion, vector storage, and a chat interface into a single service.</p>
+      <h3 class="doc-subsection-title">运行 RAG-GPT</h3>
+      <p>RAG-GPT 框架提供最快的可用 Demo 搭建路径。它将文档摄入、向量存储和聊天界面打包在单个服务中。</p>
 
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -916,8 +916,8 @@ python main.py --docs ./your-documents/ --port 8080</code></pre>
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Public Repository</div>
-        <div class="repo-card-desc">This is the only public repository in the AI-Inception organization. 45 stars on GitHub.</div>
+        <div class="repo-card-title">公开仓库</div>
+        <div class="repo-card-desc">这是 AI-Inception 组织中唯一的公开仓库。GitHub 上获得 45 个 star。</div>
         <a href="https://github.com/AI-Inception/RAG-In-Action" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/RAG-In-Action
           <!-- External link icon -->

@@ -743,12 +743,12 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -756,9 +756,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -772,10 +772,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge development">In Development</span>
+        <span class="status-badge development">开发中</span>
       </div>
       <h1 class="page-title">Video Keypoints</h1>
-      <p class="page-subtitle">Automated video keypoint extraction engine. Analyzes video content to identify and extract key moments, timestamps, and structural highlights.</p>
+      <p class="page-subtitle">自动化视频关键点提取引擎。分析视频内容，识别并提取关键时刻、时间戳和结构性亮点。</p>
       <div class="tech-tags">
         <span class="tech-tag">TBD</span>
       </div>
@@ -783,34 +783,34 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>Video Keypoints is an automated extraction engine designed to analyze video content and surface the moments that matter. Rather than requiring manual review of full-length recordings, the system identifies structural highlights, key transitions, and semantically significant timestamps.</p>
-      <p>The engine produces structured output suitable for downstream consumption by other tools in the pipeline, including integration with the Video Digest workflow for end-to-end video summarization and navigation.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>Video Keypoints 是一个自动化提取引擎，用于分析视频内容并挖掘其中的关键时刻。无需手动审看完整录像，系统即可识别结构性亮点、关键转场和语义显著的时间戳。</p>
+      <p>引擎产出结构化输出，可供流水线中的下游工具直接消费，包括与 Video Digest 工作流集成以实现端到端的视频摘要与导航。</p>
 
-      <h3 class="doc-subsection-title">Planned Features</h3>
+      <h3 class="doc-subsection-title">计划功能</h3>
       <ul class="feature-list">
-        <li>Automated keypoint detection from video content using multimodal analysis</li>
-        <li>Timestamp-based moment extraction with contextual metadata</li>
-        <li>Structured output format for downstream consumption by other pipeline stages</li>
-        <li>Integration with Video Digest pipeline for end-to-end video processing</li>
+        <li>基于多模态分析的自动化视频关键点检测</li>
+        <li>带上下文元数据的时间戳级时刻提取</li>
+        <li>结构化输出格式，供下游流水线阶段直接消费</li>
+        <li>与 Video Digest 流水线集成，实现端到端视频处理</li>
       </ul>
     </section>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
-      <p>This project is in early development. The technical direction is currently under evaluation, including decisions around the core analysis framework, model selection, and output schema design.</p>
+      <h2 class="doc-section-title">开发指南</h2>
+      <p>本项目处于早期开发阶段。技术方向仍在评估中，包括核心分析框架、模型选型和输出 schema 设计等关键决策。</p>
 
-      <h3 class="doc-subsection-title">Current Status</h3>
+      <h3 class="doc-subsection-title">当前状态</h3>
       <ul>
-        <li><strong>Architecture:</strong> Under evaluation</li>
-        <li><strong>Tech stack:</strong> To be determined</li>
-        <li><strong>Output format:</strong> Structured schema design in progress</li>
-        <li><strong>Pipeline integration:</strong> Planned for Video Digest compatibility</li>
+        <li><strong>架构：</strong>评估中</li>
+        <li><strong>技术栈：</strong>待定</li>
+        <li><strong>输出格式：</strong>结构化 schema 设计进行中</li>
+        <li><strong>流水线集成：</strong>计划兼容 Video Digest</li>
       </ul>
 
-      <h3 class="doc-subsection-title">Design Goals</h3>
-      <p>The extraction engine aims to balance precision with recall when surfacing keypoints. The system should identify genuinely significant moments without overwhelming consumers with noise. Output must be machine-readable and composable with other pipeline stages.</p>
+      <h3 class="doc-subsection-title">设计目标</h3>
+      <p>提取引擎旨在关键点召回时兼顾精确率与召回率。系统应当识别真正有意义的时刻，同时避免用噪声淹没下游消费者。输出必须是机器可读的，并可与其他流水线阶段组合使用。</p>
     </section>
 
     <!-- REPO ACCESS CARD (always last, always present) -->
@@ -822,8 +822,8 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/video-keypoints" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/video-keypoints
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

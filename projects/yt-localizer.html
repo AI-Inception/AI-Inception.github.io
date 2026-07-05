@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge active">Active</span>
+        <span class="status-badge active">活跃</span>
       </div>
       <h1 class="page-title">YT-Localizer (LiuSu)</h1>
-      <p class="page-subtitle">YouTube video auto-localization desktop tool. Download, LLM-translate subtitles, burn bilingual Chinese captions, and produce ready-to-upload mp4 files with channel batch support.</p>
+      <p class="page-subtitle">YouTube 视频自动本地化桌面工具。下载视频、LLM 翻译字幕、烧录中英双语字幕，生成可直接上传的 mp4 文件，支持频道批量处理。</p>
       <div class="tech-tags">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">PySide6</span>
@@ -791,57 +791,57 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>YT-Localizer (internally named LiuSu) is a one-click portable Windows desktop application that automates the full pipeline from YouTube video download to bilingual Chinese-captioned mp4 output. It leverages LLM APIs to intelligently translate and re-sentence subtitles, producing natural bilingual captions burned directly into the video.</p>
-      <p>The tool is designed for content creators and translators who need to localize English YouTube videos into Chinese at scale. It handles everything from subtitle extraction and ASR correction to font rendering and hardware-accelerated encoding, with no manual intervention required after initial configuration.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>YT-Localizer（内部代号 LiuSu）是一款一键即用的 Windows 便携桌面应用，自动完成从 YouTube 视频下载到中英双语字幕 mp4 输出的完整流水线。它利用 LLM API 智能翻译和重新断句字幕，生成自然流畅的双语字幕并直接烧录到视频中。</p>
+      <p>该工具面向需要大规模将英文 YouTube 视频本地化为中文的内容创作者和翻译人员。从字幕提取、ASR 纠错到字体渲染和硬件加速编码，初始配置完成后无需任何手动干预。</p>
 
-      <h3 class="doc-subsection-title">Key Features</h3>
+      <h3 class="doc-subsection-title">核心功能</h3>
       <ul class="feature-list">
-        <li>One-click portable Windows desktop app built with PySide6 -- no installation required</li>
-        <li>Channel batch processing: paste a channel or playlist URL, select videos, and queue sequential processing</li>
-        <li>Smart subtitle mode with LLM-powered ASR correction, re-sentencing, and translation alongside strict 1:1 alignment mode</li>
-        <li>Beautiful bilingual subtitle styling using Source Han Sans with adaptive sizing</li>
-        <li>Hardware encoding auto-detection for accelerated video output</li>
-        <li>Firefox login integration for accessing premium and member-only content</li>
-        <li>Fully self-contained runtimes bundled in the distribution (Python, ffmpeg, fonts, Firefox Portable, Deno)</li>
+        <li>基于 PySide6 构建的一键便携 Windows 桌面应用，无需安装</li>
+        <li>频道批量处理：粘贴频道或播放列表 URL，选择视频后排队顺序处理</li>
+        <li>智能字幕模式，支持 LLM 驱动的 ASR 纠错、重新断句和翻译，同时提供严格 1:1 对齐模式</li>
+        <li>使用思源黑体的精美双语字幕样式，自适应字号</li>
+        <li>硬件编码自动检测，加速视频输出</li>
+        <li>集成 Firefox 登录，可访问付费和会员专属内容</li>
+        <li>发行包内置全部运行时（Python、ffmpeg、字体、Firefox Portable、Deno）</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>The application bundles all dependencies into a portable distribution, eliminating the need for users to install any prerequisites. Technology choices prioritize cross-version Windows compatibility and offline operation.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>应用将所有依赖打包为便携发行版，用户无需安装任何前置条件。技术选型优先考虑跨 Windows 版本兼容性和离线运行能力。</p>
       <ul>
-        <li><strong>UI Framework:</strong> PySide6 (Qt 6 for Python) -- native-feeling desktop interface</li>
-        <li><strong>Video Pipeline:</strong> ffmpeg with hardware encoding detection (NVENC, QSV, AMF)</li>
-        <li><strong>Download Engine:</strong> yt-dlp for video and subtitle acquisition</li>
-        <li><strong>Translation:</strong> OpenAI-compatible LLM API (configurable endpoint, key, and model)</li>
-        <li><strong>Browser Automation:</strong> Firefox Portable for authenticated cookie-based downloads</li>
-        <li><strong>Subtitle Processing:</strong> Deno runtime for ASR correction and re-sentencing logic</li>
-        <li><strong>Fonts:</strong> Source Han Sans bundled for consistent bilingual rendering</li>
+        <li><strong>UI 框架：</strong>PySide6 (Qt 6 for Python) -- 原生质感桌面界面</li>
+        <li><strong>视频管线：</strong>ffmpeg，支持硬件编码检测（NVENC、QSV、AMF）</li>
+        <li><strong>下载引擎：</strong>yt-dlp，用于视频和字幕获取</li>
+        <li><strong>翻译：</strong>OpenAI 兼容 LLM API（可配置端点、密钥和模型）</li>
+        <li><strong>浏览器自动化：</strong>Firefox Portable，基于 Cookie 的认证下载</li>
+        <li><strong>字幕处理：</strong>Deno 运行时，ASR 纠错和重新断句逻辑</li>
+        <li><strong>字体：</strong>内置思源黑体，确保双语渲染一致性</li>
       </ul>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>The application is distributed as a portable folder. No installation or system-level dependencies are required.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>应用以便携文件夹形式分发，无需安装，不依赖系统级组件。</p>
 
-      <h3 class="doc-subsection-title">Quick Start</h3>
+      <h3 class="doc-subsection-title">快速开始</h3>
       <ol>
-        <li>Extract the distribution folder to any location</li>
-        <li>Double-click <code>yt-localizer.exe</code> to launch</li>
-        <li>Click the "AI - Not Configured" indicator in the toolbar, open Settings, and fill in your API endpoint, API key, and model name. Use "Test Connection" to verify.</li>
-        <li>Paste a YouTube video or channel/playlist URL, select quality and subtitle options, then click "Start"</li>
+        <li>将发行文件夹解压到任意位置</li>
+        <li>双击 <code>yt-localizer.exe</code> 启动</li>
+        <li>点击工具栏中的"AI - Not Configured"指示器，打开设置，填写 API 端点、API 密钥和模型名称，使用"Test Connection"验证连接</li>
+        <li>粘贴 YouTube 视频或频道/播放列表 URL，选择画质和字幕选项，然后点击"Start"</li>
       </ol>
 
-      <h3 class="doc-subsection-title">Output Structure</h3>
-      <p>Processed videos and intermediate artifacts are stored in predictable locations relative to the application root:</p>
+      <h3 class="doc-subsection-title">输出结构</h3>
+      <p>处理后的视频和中间产物存储在相对于应用根目录的固定位置：</p>
 
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">text</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -853,25 +853,25 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Known Limitations</h3>
+      <h3 class="doc-subsection-title">已知限制</h3>
       <ul>
-        <li><strong>Premium content:</strong> Member-only and premium videos use best-effort download with automatic fallback strategies</li>
-        <li><strong>Cookie expiry:</strong> Firefox login cookies expire every 2-4 weeks and must be refreshed manually</li>
-        <li><strong>Batch processing:</strong> Channel batch mode processes videos sequentially (one at a time), not in parallel</li>
-        <li><strong>Channel listing:</strong> The channel video list is flat, showing only title and duration without publish dates</li>
+        <li><strong>付费内容：</strong>会员专属和付费视频采用尽力下载策略，自动尝试降级方案</li>
+        <li><strong>Cookie 过期：</strong>Firefox 登录 Cookie 每 2-4 周过期，需手动刷新</li>
+        <li><strong>批量处理：</strong>频道批量模式逐个顺序处理视频，不支持并行</li>
+        <li><strong>频道列表：</strong>频道视频列表为平铺展示，仅显示标题和时长，不含发布日期</li>
       </ul>
     </section>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
-      <p>Local development uses a Python virtual environment managed with <code>uv</code>. The application entry point is the <code>app.main</code> module.</p>
+      <h2 class="doc-section-title">开发指南</h2>
+      <p>本地开发使用 <code>uv</code> 管理的 Python 虚拟环境。应用入口为 <code>app.main</code> 模块。</p>
 
-      <h3 class="doc-subsection-title">Environment Setup</h3>
+      <h3 class="doc-subsection-title">环境配置</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -881,11 +881,11 @@ uv pip install --python .venv\Scripts\python.exe -r requirements.lock</code></pr
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Running Locally</h3>
+      <h3 class="doc-subsection-title">本地运行</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -908,8 +908,8 @@ set PYTHONIOENCODING=utf-8
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/yt-localizer" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/yt-localizer
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

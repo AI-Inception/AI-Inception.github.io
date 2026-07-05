@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge active">Active</span>
+        <span class="status-badge active">活跃</span>
       </div>
       <h1 class="page-title">Xinfeng</h1>
-      <p class="page-subtitle">Bilibili video English localization desktop tool. Download, LLM-translate subtitles to English, burn bilingual captions, and output mp4.</p>
+      <p class="page-subtitle">Bilibili 视频英文本地化桌面工具。下载视频、LLM 翻译字幕为英文、烧录双语字幕，输出 mp4。</p>
       <div class="tech-tags">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">PySide6</span>
@@ -788,67 +788,67 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>Xinfeng is a one-click portable desktop application that localizes Bilibili videos into English. It downloads the source video, extracts or generates subtitles, uses an LLM to translate them into natural English, and burns bilingual captions directly into the output mp4 file.</p>
-      <p>The tool is designed for content creators and translators who need a streamlined pipeline from Chinese video content to English-accessible output, without manual subtitle editing or complex toolchain setup.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>Xinfeng 是一款一键便携桌面应用，用于将 Bilibili 视频本地化为英文。它下载源视频、提取或生成字幕、通过 LLM 翻译为自然英文，并将双语字幕直接烧录到输出的 mp4 文件中。</p>
+      <p>本工具面向内容创作者和译者，提供从中文视频内容到英文可访问输出的一站式流水线，无需手动编辑字幕或配置复杂工具链。</p>
       <ul class="feature-list">
-        <li>One-click portable desktop app built with PySide6 -- no installer, no registry, fully relocatable folder</li>
-        <li>Beautiful subtitle styling with Source Han Sans, bold white text, black outline, and adaptive sizing</li>
-        <li>Smart mode: LLM error-corrects ASR output, re-sentences for natural flow, then translates</li>
-        <li>Strict 1:1 alignment mode for subtitle-accurate translation without restructuring</li>
-        <li>Hardware encoding acceleration when a compatible GPU is available</li>
-        <li>Glossary support, translation context injection, optional proofreading pass, and disk cache for repeated work</li>
+        <li>基于 PySide6 的一键便携桌面应用——无需安装、无注册表写入、整个文件夹可任意移动</li>
+        <li>精美字幕样式：思源黑体、粗体白字、黑色描边、自适应字号</li>
+        <li>智能模式：LLM 纠正 ASR 输出错误、重新断句以获得自然节奏，然后翻译</li>
+        <li>严格 1:1 对齐模式：逐条字幕精确翻译，不改变原始时间轴结构</li>
+        <li>兼容 GPU 可用时自动启用硬件编码加速</li>
+        <li>支持术语表、翻译上下文注入、可选校对环节，以及磁盘缓存避免重复工作</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>Built as a self-contained desktop application with minimal external dependencies at runtime.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>作为自包含桌面应用构建，运行时外部依赖极少。</p>
       <ul>
-        <li><strong>Application Framework:</strong> PySide6 (Qt for Python)</li>
-        <li><strong>Language:</strong> Python</li>
-        <li><strong>Video Processing:</strong> ffmpeg (bundled, handles download/encode/mux)</li>
-        <li><strong>Translation Engine:</strong> OpenAI-compatible LLM API (configurable endpoint, key, and model)</li>
-        <li><strong>Subtitle Rendering:</strong> Source Han Sans with bold white + black outline, adaptive font size</li>
+        <li><strong>应用框架：</strong> PySide6 (Qt for Python)</li>
+        <li><strong>语言：</strong> Python</li>
+        <li><strong>视频处理：</strong> ffmpeg（内置，负责下载/编码/封装）</li>
+        <li><strong>翻译引擎：</strong> OpenAI 兼容 LLM API（可配置端点、密钥和模型）</li>
+        <li><strong>字幕渲染：</strong> 思源黑体，粗体白字 + 黑色描边，自适应字号</li>
       </ul>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>Xinfeng is distributed as a portable folder. No installation or system configuration is required.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>Xinfeng 以便携文件夹形式分发，无需安装或系统配置。</p>
 
-      <h3 class="doc-subsection-title">Quick Start</h3>
+      <h3 class="doc-subsection-title">快速开始</h3>
       <ol>
-        <li>Extract the release folder to any location</li>
-        <li>Double-click <code>xinfeng.exe</code> to launch</li>
-        <li>Click "AI - Not Configured" in the toolbar, open Settings, and fill in your API endpoint, API key, and model name</li>
-        <li>Paste a Bilibili video link, select quality/subtitle/bilingual options, and click "Start"</li>
-        <li>Find the output in <code>data/output/</code></li>
+        <li>将发布文件夹解压到任意位置</li>
+        <li>双击 <code>xinfeng.exe</code> 启动</li>
+        <li>点击工具栏中的"AI - Not Configured"，打开设置，填写 API 端点、API 密钥和模型名称</li>
+        <li>粘贴 Bilibili 视频链接，选择画质/字幕/双语选项，点击"开始"</li>
+        <li>在 <code>data/output/</code> 中找到输出文件</li>
       </ol>
 
-      <h3 class="doc-subsection-title">Translation Modes</h3>
-      <p><strong>Smart mode</strong> runs the LLM through a multi-step pipeline: error-correct the ASR transcript, re-sentence it into natural phrase boundaries, then translate. This produces the most fluent English output but may restructure subtitle timing.</p>
-      <p><strong>Strict 1:1 mode</strong> translates each subtitle segment individually, preserving the original timing alignment exactly. Best when timing precision matters more than prose flow.</p>
+      <h3 class="doc-subsection-title">翻译模式</h3>
+      <p><strong>智能模式</strong>通过多步流水线驱动 LLM：纠正 ASR 转录错误、按自然语句边界重新断句，然后翻译。此模式产出最流畅的英文，但可能调整字幕时间轴。</p>
+      <p><strong>严格 1:1 模式</strong>逐条翻译每段字幕，精确保留原始时间对齐。适用于时间精度比行文流畅度更重要的场景。</p>
 
-      <h3 class="doc-subsection-title">Known Limitations</h3>
+      <h3 class="doc-subsection-title">已知限制</h3>
       <ul>
-        <li><strong>Premium/member-only videos:</strong> best-effort download with automatic fallback to available quality</li>
-        <li><strong>Bilibili login Cookie (SESSDATA):</strong> expires periodically and must be refreshed manually when access degrades</li>
+        <li><strong>付费/大会员专属视频：</strong>尽力下载，自动降级到可用画质</li>
+        <li><strong>Bilibili 登录 Cookie (SESSDATA)：</strong>会定期过期，访问降级时需手动刷新</li>
       </ul>
     </section>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
-      <p>Local development uses a Python virtual environment managed with <code>uv</code>.</p>
+      <h2 class="doc-section-title">开发指南</h2>
+      <p>本地开发使用 <code>uv</code> 管理的 Python 虚拟环境。</p>
 
-      <h3 class="doc-subsection-title">Setup</h3>
+      <h3 class="doc-subsection-title">环境配置</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -857,11 +857,11 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Running</h3>
+      <h3 class="doc-subsection-title">本地运行</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -881,8 +881,8 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/xinfeng" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/xinfeng
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge active">Active</span>
+        <span class="status-badge active">活跃</span>
       </div>
       <h1 class="page-title">AgentConvert v2</h1>
-      <p class="page-subtitle">Private AI relay platform with pool groups, independent billing multipliers, user invitation system, and audited quota management.</p>
+      <p class="page-subtitle">私有 AI 中继平台，支持池组、独立计费倍率、用户邀请机制和可审计的配额管理。</p>
       <div class="tech-tags">
         <span class="tech-tag">TypeScript</span>
         <span class="tech-tag">Node.js 22+</span>
@@ -788,47 +788,47 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>AgentConvert v2 is a private AI relay platform that routes model requests through configurable pool groups, each with independent billing multipliers. It provides a complete user lifecycle including invitation-based registration, quota management, and full audit trails for all financial operations.</p>
-      <p>The platform supports multiple upstream providers (OpenRouter, OpenAI PPAP, Claude PPAP) with distinct cost multipliers per pool, enabling fine-grained control over billing and resource allocation across the organization.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>AgentConvert v2 是一个私有 AI 中继平台，通过可配置的池组路由模型请求，每个池组拥有独立的计费倍率。平台提供完整的用户生命周期管理，包括基于邀请的注册、配额管理，以及所有财务操作的完整审计追踪。</p>
+      <p>平台支持多个上游提供商（OpenRouter、OpenAI PPAP、Claude PPAP），每个池组可设置不同的费用倍率，实现对组织内计费和资源分配的精细控制。</p>
 
-      <h3 class="doc-subsection-title">Key Features</h3>
+      <h3 class="doc-subsection-title">核心功能</h3>
       <ul class="feature-list">
-        <li>Pool groups with independent billing multipliers (OpenRouter 10x, OpenAI PPAP 1x, Claude PPAP 2x)</li>
-        <li>User invitation codes with recharge-triggered token rewards (5% inviter bonus)</li>
-        <li>Audited quota, token, and recharge changes with full traceability</li>
-        <li>Admin pool maintenance and audit endpoints</li>
-        <li>Security baseline enforcing HTTPS origins and session secrets</li>
-        <li>Local E2E testing baseline for development confidence</li>
-        <li>Data consistency guarantees: defensive copies, replay idempotency, overflow rejection</li>
+        <li>池组支持独立计费倍率（OpenRouter 10x、OpenAI PPAP 1x、Claude PPAP 2x）</li>
+        <li>用户邀请码支持充值触发的 token 奖励（邀请人 5% 返利）</li>
+        <li>配额、token 和充值变更全程审计，完整可追溯</li>
+        <li>管理员池组维护和审计端点</li>
+        <li>安全基线强制 HTTPS 来源和 session 密钥</li>
+        <li>本地端到端测试基线，保障开发信心</li>
+        <li>数据一致性保证：防御性拷贝、重放幂等性、溢出拒绝</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>Built on a modern TypeScript foundation with a focus on type safety, auditability, and minimal operational overhead. SQLite provides zero-configuration persistence suitable for the platform's single-node deployment model.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>基于现代 TypeScript 构建，专注于类型安全、可审计性和最小运维开销。SQLite 提供零配置持久化，适合平台的单节点部署模型。</p>
       <ul>
-        <li><strong>Runtime:</strong> Node.js 22+ with native TypeScript support</li>
-        <li><strong>Language:</strong> TypeScript with strict mode</li>
-        <li><strong>Package Manager:</strong> npm 10+</li>
-        <li><strong>Database:</strong> SQLite (embedded, zero-config)</li>
-        <li><strong>Testing:</strong> Local E2E test suite</li>
+        <li><strong>运行时：</strong>Node.js 22+，原生 TypeScript 支持</li>
+        <li><strong>语言：</strong>TypeScript strict 模式</li>
+        <li><strong>包管理器：</strong>npm 10+</li>
+        <li><strong>数据库：</strong>SQLite（嵌入式，零配置）</li>
+        <li><strong>测试：</strong>本地端到端测试套件</li>
       </ul>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>The platform exposes a set of internal and user-facing API endpoints for model-call billing, recharge processing, invitation management, and administrative operations.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>平台提供一组内部和面向用户的 API 端点，用于模型调用计费、充值处理、邀请管理和管理员操作。</p>
 
-      <h3 class="doc-subsection-title">API Endpoints</h3>
+      <h3 class="doc-subsection-title">API 端点</h3>
 
-      <h4 class="doc-detail-title">Admin Endpoints</h4>
+      <h4 class="doc-detail-title">管理员端点</h4>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">http</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -839,11 +839,11 @@ GET  /api/admin/audit                # Audit log</code></pre>
         </div>
       </div>
 
-      <h4 class="doc-detail-title">Internal Endpoints</h4>
+      <h4 class="doc-detail-title">内部端点</h4>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">http</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -853,11 +853,11 @@ POST /api/internal/recharge-events   # Record recharge event</code></pre>
         </div>
       </div>
 
-      <h4 class="doc-detail-title">User Endpoints</h4>
+      <h4 class="doc-detail-title">用户端点</h4>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">http</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -870,12 +870,12 @@ GET   /app/invitations                # Invitation desk page</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Health Check</h3>
-      <p>The service exposes a health endpoint at the default address for monitoring and readiness probes.</p>
+      <h3 class="doc-subsection-title">健康检查</h3>
+      <p>服务在默认地址暴露健康检查端点，用于监控和就绪探测。</p>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -887,20 +887,20 @@ GET   /app/invitations                # Invitation desk page</code></pre>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
-      <p>The project uses a straightforward npm-based workflow. All checks, tests, and the dev server are accessible via standard scripts.</p>
+      <h2 class="doc-section-title">开发指南</h2>
+      <p>项目使用简洁的基于 npm 的工作流。所有检查、测试和开发服务器均可通过标准脚本访问。</p>
 
-      <h3 class="doc-subsection-title">Prerequisites</h3>
+      <h3 class="doc-subsection-title">前置要求</h3>
       <ul>
         <li>Node.js 22+</li>
         <li>npm 10+</li>
       </ul>
 
-      <h3 class="doc-subsection-title">Local Setup</h3>
+      <h3 class="doc-subsection-title">本地配置</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -919,12 +919,12 @@ npm run e2e:local</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Git Workflow</h3>
-      <p>The repository follows a layered branch strategy for safe progression from development to production.</p>
+      <h3 class="doc-subsection-title">Git 工作流</h3>
+      <p>仓库采用分层分支策略，确保从开发到生产的安全推进。</p>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">text</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -936,10 +936,10 @@ npm run e2e:local</code></pre>
         </div>
       </div>
       <ul>
-        <li><strong>feature/*:</strong> All new work starts here, branched from <code>dev</code></li>
-        <li><strong>dev:</strong> Integration branch where features are merged and tested together</li>
-        <li><strong>release:</strong> Pre-production staging for final validation</li>
-        <li><strong>master:</strong> Production-ready code only</li>
+        <li><strong>feature/*：</strong>所有新工作从此开始，基于 <code>dev</code> 分支创建</li>
+        <li><strong>dev：</strong>集成分支，功能在此合并并联合测试</li>
+        <li><strong>release：</strong>预生产暂存，用于最终验证</li>
+        <li><strong>master：</strong>仅包含生产就绪代码</li>
       </ul>
     </section>
 
@@ -952,8 +952,8 @@ npm run e2e:local</code></pre>
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/agentconvert-v2" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/agentconvert-v2
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

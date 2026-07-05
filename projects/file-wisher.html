@@ -743,14 +743,14 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <nav class="sidebar" id="sidebar">
     <a href="../index.html" class="sidebar-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
     <div class="sidebar-nav">
-      <a href="#overview" class="sidebar-link active">Overview</a>
-      <a href="#tech-stack" class="sidebar-link">Tech Stack</a>
-      <a href="#usage" class="sidebar-link">Usage</a>
-      <a href="#development" class="sidebar-link">Development</a>
-      <a href="#access" class="sidebar-link">Repository</a>
+      <a href="#overview" class="sidebar-link active">概述</a>
+      <a href="#tech-stack" class="sidebar-link">技术栈</a>
+      <a href="#usage" class="sidebar-link">使用指南</a>
+      <a href="#development" class="sidebar-link">开发指南</a>
+      <a href="#access" class="sidebar-link">仓库访问</a>
     </div>
   </nav>
 
@@ -758,9 +758,9 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
   <header class="mobile-bar">
     <a href="../index.html" class="mobile-back">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>All Projects</span>
+      <span>所有项目</span>
     </a>
-    <button class="mobile-menu-btn" id="menuToggle" aria-label="Open navigation">
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="打开导航">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </header>
@@ -774,10 +774,10 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
     <!-- PAGE HEADER -->
     <header class="page-header">
       <div class="page-header-meta">
-        <span class="status-badge active">Active</span>
+        <span class="status-badge active">活跃</span>
       </div>
       <h1 class="page-title">File Wisher</h1>
-      <p class="page-subtitle">AI-driven multi-source resource discovery. Ask in natural language, get download links.</p>
+      <p class="page-subtitle">AI 驱动的多源资源发现工具。用自然语言描述需求，获取下载链接。</p>
       <div class="tech-tags">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">Claude Sonnet 5</span>
@@ -789,41 +789,41 @@ a, button, .sidebar-link, .tech-tag, .code-block-copy {
 
     <!-- SECTION: Overview -->
     <section id="overview" class="doc-section">
-      <h2 class="doc-section-title">Overview</h2>
-      <p>File Wisher is an intelligent resource discovery agent that translates natural language requests into actionable download links. Instead of manually searching across multiple platforms, users describe what they want in plain English and the agent orchestrates searches across specialized sources to find the best matches.</p>
-      <p>The system is powered by a Claude Sonnet 5 tool-use loop (using the Anthropic SDK directly, no LangChain) that iteratively refines searches, evaluates results, and presents curated options. The agent has access to multiple source-specific tools and can reason about which sources are most appropriate for a given request.</p>
+      <h2 class="doc-section-title">概述</h2>
+      <p>File Wisher 是一个智能资源发现代理，能够将自然语言请求转化为可操作的下载链接。用户无需在多个平台间手动搜索，只需用自然语言描述想要的内容，代理便会协调多个专业来源进行搜索，找到最匹配的结果。</p>
+      <p>系统由 Claude Sonnet 5 tool-use 循环驱动（直接使用 Anthropic SDK，无 LangChain 依赖），能够迭代优化搜索、评估结果并呈现精选选项。代理可以访问多个来源专用工具，并能判断哪些来源最适合当前请求。</p>
       <ul class="feature-list">
-        <li>Natural language query translated into intelligent multi-source search</li>
-        <li>Tool-use agent loop for iterative search refinement and result ranking</li>
-        <li>Password-protected web interface for secure access</li>
-        <li>SQLite result caching to avoid redundant searches</li>
-        <li>Integration with qBittorrent for direct torrent management</li>
+        <li>自然语言查询自动转化为智能多源搜索</li>
+        <li>Tool-use 代理循环实现迭代搜索优化与结果排序</li>
+        <li>密码保护的 Web 界面确保安全访问</li>
+        <li>SQLite 结果缓存避免重复搜索</li>
+        <li>集成 qBittorrent 实现种子直接管理</li>
       </ul>
     </section>
 
     <!-- SECTION: Tech Stack -->
     <section id="tech-stack" class="doc-section">
-      <h2 class="doc-section-title">Tech Stack</h2>
-      <p>The architecture is deliberately minimal: a single Python process running FastAPI handles both the web interface and the AI agent loop, with SQLite providing persistence without operational overhead.</p>
+      <h2 class="doc-section-title">技术栈</h2>
+      <p>架构刻意保持精简：单个 Python 进程运行 FastAPI，同时处理 Web 界面和 AI 代理循环，SQLite 提供持久化存储且无运维开销。</p>
       <ul>
-        <li><strong>Agent:</strong> Claude Sonnet 5 tool-use loop via the Anthropic SDK (no framework dependencies)</li>
-        <li><strong>Server:</strong> FastAPI + uvicorn with password authentication</li>
-        <li><strong>Database:</strong> SQLite for result caching and session state</li>
-        <li><strong>Sources:</strong> SteamRIP (games), BTDigg (general), Nyaa (anime/manga), qBittorrent (torrent management)</li>
-        <li><strong>Deploy:</strong> Raspberry Pi, managed via systemd user service</li>
+        <li><strong>代理：</strong>Claude Sonnet 5 tool-use 循环，通过 Anthropic SDK 调用（无框架依赖）</li>
+        <li><strong>服务端：</strong>FastAPI + uvicorn，带密码认证</li>
+        <li><strong>数据库：</strong>SQLite，用于结果缓存和会话状态</li>
+        <li><strong>数据源：</strong>SteamRIP（游戏）、BTDigg（综合）、Nyaa（动漫/漫画）、qBittorrent（种子管理）</li>
+        <li><strong>部署：</strong>Raspberry Pi，通过 systemd 用户服务管理</li>
       </ul>
     </section>
 
     <!-- SECTION: Usage -->
     <section id="usage" class="doc-section">
-      <h2 class="doc-section-title">Usage</h2>
-      <p>The service runs as a systemd user unit on the Raspberry Pi. Once running, the web interface is accessible at the configured port with password authentication.</p>
+      <h2 class="doc-section-title">使用指南</h2>
+      <p>服务以 systemd 用户单元运行在 Raspberry Pi 上。启动后，可通过配置的端口访问 Web 界面，需密码认证。</p>
 
-      <h3 class="doc-subsection-title">Starting the Service</h3>
+      <h3 class="doc-subsection-title">启动服务</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -837,35 +837,35 @@ systemctl --user status file-wisher</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Querying</h3>
-      <p>Navigate to the web interface and enter a natural language description of what you are looking for. The agent will search across relevant sources and present ranked results with download links.</p>
-      <p>Example queries:</p>
+      <h3 class="doc-subsection-title">查询</h3>
+      <p>打开 Web 界面，用自然语言描述你要找的资源。代理会在相关来源中搜索，并按排序呈现结果及下载链接。</p>
+      <p>查询示例：</p>
       <ul>
         <li>"Latest version of Factorio for Linux"</li>
         <li>"One Piece manga volume 105 in English"</li>
         <li>"High quality FLAC rip of Daft Punk Discovery"</li>
       </ul>
 
-      <h3 class="doc-subsection-title">qBittorrent Integration</h3>
-      <p>When the agent finds torrent-based results, it can interface directly with qBittorrent to add downloads to the queue without manual intervention. The qBittorrent Web API must be accessible from the service host.</p>
+      <h3 class="doc-subsection-title">qBittorrent 集成</h3>
+      <p>当代理找到基于种子的结果时，可以直接与 qBittorrent 交互，将下载任务添加到队列中，无需手动操作。qBittorrent Web API 必须可从服务主机访问。</p>
     </section>
 
     <!-- SECTION: Development -->
     <section id="development" class="doc-section">
-      <h2 class="doc-section-title">Development</h2>
+      <h2 class="doc-section-title">开发指南</h2>
 
-      <h3 class="doc-subsection-title">Prerequisites</h3>
+      <h3 class="doc-subsection-title">前置条件</h3>
       <ul>
         <li>Python 3.11+</li>
-        <li>An Anthropic API key with Claude Sonnet 5 access</li>
-        <li>qBittorrent instance with Web API enabled (optional, for torrent management)</li>
+        <li>具有 Claude Sonnet 5 访问权限的 Anthropic API 密钥</li>
+        <li>启用 Web API 的 qBittorrent 实例（可选，用于种子管理）</li>
       </ul>
 
-      <h3 class="doc-subsection-title">Local Setup</h3>
+      <h3 class="doc-subsection-title">本地配置</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -885,11 +885,11 @@ cp .env.example .env
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Running Locally</h3>
+      <h3 class="doc-subsection-title">本地运行</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">bash</span>
-          <button class="code-block-copy" aria-label="Copy code">
+          <button class="code-block-copy" aria-label="复制代码">
             <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -899,7 +899,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000</code></pre>
         </div>
       </div>
 
-      <h3 class="doc-subsection-title">Environment Variables</h3>
+      <h3 class="doc-subsection-title">环境变量</h3>
       <div class="code-block-wrapper">
         <div class="code-block-header">
           <span class="code-block-lang">env</span>
@@ -924,8 +924,8 @@ QBITTORRENT_PASS=adminadmin</code></pre>
         </svg>
       </div>
       <div class="repo-card-body">
-        <div class="repo-card-title">Private Repository</div>
-        <div class="repo-card-desc">This project is maintained within the AI-Inception organization.</div>
+        <div class="repo-card-title">私有仓库</div>
+        <div class="repo-card-desc">本项目在 AI-Inception 组织内部维护。</div>
         <a href="https://github.com/AI-Inception/file-wisher" class="repo-card-link" target="_blank" rel="noopener noreferrer">
           github.com/AI-Inception/file-wisher
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>

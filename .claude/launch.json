@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "showcase-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8234", "--directory", "C:\\Users\\daishuge\\AI-Inception.github.io"],
+      "port": 8234
+    }
+  ]
+}
